@@ -1,0 +1,234 @@
+/* === Base Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Background & Font === */
+body {
+  background-image: url('photo-1600431521340-491eca880813.avif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+h2 {
+  background-color: white;
+  border: 10px solid;
+  border-radius: 35px;
+  padding: 15px;
+  margin: 20px auto;
+  width: 400px;
+  text-align: center;
+  font-size: 28px;
+  font-family: "Lucida Handwriting", cursive;
+  color: black;
+}
+
+
+/* === Header Banner === */
+.banner,
+.banner2 {
+  background-color: rgba(41, 128, 185, 0.85);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.banner h1,
+.banner2 h1 {
+  font-size: 28px;
+}
+
+.banner a,
+.banner2 a {
+  color: #f1f1f1;
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.banner a:hover,
+.banner2 a:hover {
+  color: #dff3ff;
+}
+
+/* === Card Containers === */
+.border,
+.border2,
+form {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 600px;
+  margin: 30px auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* === Input & Select === */
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select,
+button,
+input[type="submit"],
+input[type="file"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #2980b9;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.3);
+  outline: none;
+}
+
+/* === Buttons === */
+button,
+input[type="submit"] {
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #1f5f91;
+}
+
+/* === Tables === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #ecf0f1;
+}
+
+/* === File Input === */
+input[type="file"] {
+  border: none;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .banner,
+  .banner2 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .banner a,
+  .banner2 a {
+    margin: 10px 0 0;
+  }
+}
+
+/* === Chatbot Container === */
+.chatbot-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 320px;
+  height: 400px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+}
+
+.chatbot-header {
+  background: #2980b9;
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.chatbot-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+.chatbot-input {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+
+.chatbot-input button {
+  background: #2980b9;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.chatbot-input button:hover {
+  background: #1f5f91;
+}
+
+/* === Chatbot Floating Toggle Button === */
+.chatbot-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2980b9;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 1001;
+}
+
+.chatbot-toggle:hover {
+  background: #1f5f91;
+  transform: scale(1.05);
+}
