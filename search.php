@@ -7,12 +7,10 @@ if ($conn->connect_error) {
 $search = $_GET['search'] ?? '';
 $genre = $_GET['genre'] ?? 'All';
 
-// Base query
 $sql = "SELECT * FROM books WHERE 1=1";
 $params = [];
 $types = "";
 
-// Add search filter
 if (!empty($search)) {
     $sql .= " AND (title LIKE ? OR author LIKE ?)";
     $params[] = "%$search%";
@@ -20,7 +18,6 @@ if (!empty($search)) {
     $types .= "ss";
 }
 
-// Add genre filter only if not "All"
 if ($genre !== "All") {
     $sql .= " AND genre = ?";
     $params[] = $genre;
@@ -29,7 +26,6 @@ if ($genre !== "All") {
 
 $stmt = $conn->prepare($sql);
 
-// Bind parameters if any
 if (!empty($params)) {
     $stmt->bind_param($types, ...$params);
 }

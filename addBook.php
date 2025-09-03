@@ -58,5 +58,71 @@
         <br><br>
     </div>
     </form>
+
+    <!-- === Chatbot Window === -->
+    <div class="chatbot-container" style="display:none;">
+    <div class="chatbot-header">Messages</div>
+    <div class="chatbot-messages"></div>
+    
+    <!-- proper form -->
+    <form class="chatbot-input" id="chatForm">
+    <input type="text" name="message" placeholder="Type a message..." required />
+    <button type="submit">Send</button>
+    </form>
+
+    </div>
+
+
+    <div class="chatbot-toggle">💬</div>
+
+    <script>
+    const toggleBtn = document.querySelector('.chatbot-toggle');
+    const chatbot = document.querySelector('.chatbot-container');
+    const chatForm = document.getElementById('chatForm');
+    const chatMessages = document.querySelector('.chatbot-messages');
+
+    toggleBtn.addEventListener('click', () => {
+    chatbot.style.display =
+        chatbot.style.display === 'none' || chatbot.style.display === ''
+        ? 'flex'
+        : 'none';
+    });
+
+    // handle form submit
+    chatForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const input = this.querySelector('input[name="message"]');
+    const message = input.value.trim();
+    if (!message) return;
+
+    // show message immediately
+    const userMsg = document.createElement('div');
+    userMsg.textContent = "You: " + message;
+    chatMessages.appendChild(userMsg);
+
+    // send to backend
+    fetch('studentMessages.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ sender: 'student', message })
+    })
+    .then(res => res.json())
+    .then(data => {
+        chatMessages.innerHTML = ""; 
+        data.forEach(msg => {
+        const div = document.createElement('div');
+        div.textContent = msg.sender + ": " + msg.message;
+        chatMessages.appendChild(div);
+        });
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    });
+
+    input.value = "";
+    });
+    </script>
+
+
+
 </body>
 </html>
